@@ -1,4 +1,4 @@
-# Udacity Flash Mobilecards
+# Udacity Mobile Flashcards
 A React Native project that creates a mobile card app on iOS
 
 ### Compatible Platforms
