@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, AsyncStorage } from 'react-native'
-import { Notification, Permissions } from 'expo'
+import { Notifications, Permissions } from 'expo'
 
 const NOTIFICATION_KEY = 'Flashcards:notifcations'
 
@@ -32,7 +32,7 @@ export function setLocalNotification () {
       if (data === null) {
         Permissions.askAsync(Permissions.NOTIFICATIONS)
           .then(({ status }) => {
-            Notifications.cancelAllScheduleNotificationsAsync()
+            Notifications.cancelAllScheduledNotificationsAsync()
 
             let tomorrow = new Date()
             tomorrow.setDate(tomorrow.getDate() + 1)
