@@ -1,15 +1,15 @@
-# udacity-mobile-flashcards
-A project that uses React Native to create a mobile card app on iOS
+# Udacity Flash Mobilecards
+A React Native project that creates a mobile card app on iOS
 
-# Platform Tested
+### Compatible Platforms
 This app has been tested and works correctly on iOS emulator. Below is a list of tested devices:
 1. iPhone X
 2. iPhone 8
 3. iPhone 7
 
-# Quick Start
+### Quick Start
 
-# Technologies Used
+### Technologies Used
 
 
-# Components Tree
+### Components Tree
