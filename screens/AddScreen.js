@@ -12,7 +12,7 @@ export default class LinksScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <Text>What is the title of your new deck?</Text>
-        <TextInputBox/>
+        <TextInputBox>TEST</TextInputBox>
         <TextButton>Create Deck</TextButton>
       </ScrollView>
     );

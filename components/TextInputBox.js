@@ -3,14 +3,14 @@ import { TextInput } from 'react-native'
 
 export default class TextInputBox extends Component {
   state = {
-    text: 'Input your text here'
+    text: ''
   }
   render() {
     return (
       <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
         onChangeText={(text) => this.setState({text})}
-        value={this.state.text}/>
+        placeholder={this.props.children}/>
     )
   }
 }
