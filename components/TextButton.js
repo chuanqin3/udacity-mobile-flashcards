@@ -16,8 +16,9 @@ export default function TextButton ({ children, onPress, style={} }) {
 const styles = StyleSheet.create({
   button: {
     textAlign: 'center',
-    alignItems: 'center',
     backgroundColor: '#DDDDDD',
-    padding: 10
+    padding: 10,
+    width: 100,
+    margin: 10,
   }
 })

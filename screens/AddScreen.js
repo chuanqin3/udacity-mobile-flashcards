@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import TextButton from '../components/TextButton'
 import TextInputBox from '../components/TextInputBox'
 
@@ -10,11 +10,11 @@ export default class LinksScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <Text>What is the title of your new deck?</Text>
-        <TextInputBox>TEST</TextInputBox>
+      <View style={styles.container}>
+        <Text style={styles.title}>What is the title of your new deck?</Text>
+        <TextInputBox>Input the deck title here</TextInputBox>
         <TextButton>Create Deck</TextButton>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -24,5 +24,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
+    alignItems: 'center',
   },
+  title: {
+    fontSize: 20,
+    padding: 10,
+  }
 });

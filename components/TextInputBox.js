@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextInput } from 'react-native'
+import { TextInput, StyleSheet } from 'react-native'
 
 export default class TextInputBox extends Component {
   state = {
@@ -8,9 +8,19 @@ export default class TextInputBox extends Component {
   render() {
     return (
       <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        style={[styles.inputBox]}
+        maxLength={30}
         onChangeText={(text) => this.setState({text})}
         placeholder={this.props.children}/>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  inputBox: {
+    height: 30,
+    width: 200,
+    borderColor: 'gray',
+    borderWidth: 1,
+  }
+})
