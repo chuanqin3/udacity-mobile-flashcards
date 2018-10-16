@@ -8,11 +8,18 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { connect } from 'react-redux'
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+// import { connect } from 'http2';
 
-export default class DecksScreen extends React.Component {
+class DecksScreen extends React.Component {
+  componentDidMount() {
+    // this.props.dispatch(receiveDecks())
+    console.log(this.props)
+  }
+
   static navigationOptions = {
     header: null,
   };
@@ -94,6 +101,21 @@ export default class DecksScreen extends React.Component {
   //   );
   // };
 }
+
+function mapStateToProps (state) {
+  return {
+    state,
+  }
+}
+
+function mapDispatchToProps (dispatch, { receiveDecks }) {
+  return {
+    dispatch,
+    receiveDecks,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DecksScreen)
 
 const styles = StyleSheet.create({
   container: {
