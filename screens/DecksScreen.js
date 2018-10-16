@@ -16,7 +16,7 @@ import { MonoText } from '../components/StyledText';
 
 class DecksScreen extends React.Component {
   componentDidMount() {
-    // this.props.dispatch(receiveDecks())
+    this.props.dispatch(receiveDecks())
     console.log(this.props)
   }
 
