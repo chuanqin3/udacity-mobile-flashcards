@@ -1,8 +1,9 @@
 import { AsyncStorage } from 'react-native'
-import { DECK_STORAGE_KEY } from './_data.js'
+import { DECK_STORAGE_KEY, formatDecksResult } from './_data.js'
 
 export function fetchDecks () {
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
+    .then(formatDecksResult)
 }
 
 export function newCard ({ entry, key }) {

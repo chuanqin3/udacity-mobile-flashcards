@@ -10,15 +10,26 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 import { receiveDecks } from '../actions'
-import { WebBrowser } from 'expo';
+import { fetchDecks } from '../utils/api'
+import { AppLoading } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 // import { connect } from 'http2';
 
 class DecksScreen extends React.Component {
+  state = {
+    ready: false,
+  }
   componentDidMount() {
-    this.props.dispatch(receiveDecks())
+    const { dispatch } = this.props
+
+    // Redux Logger
+    dispatch(receiveDecks())
+    // this.props.dispatch(handleInitialData())
     console.log(this.props)
+
+    // fetch data from Redux State
+    fetchDecks().then((decks) => dispatch(receiveDecks(decks)))
   }
 
   static navigationOptions = {
@@ -26,9 +37,14 @@ class DecksScreen extends React.Component {
   };
 
   render() {
+    const { ready } = this.state
+    if (ready === false ) {
+      return <AppLoading />
+    }
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <Text>undefined</Text>
           {/* <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -103,8 +119,9 @@ class DecksScreen extends React.Component {
   // };
 }
 
-function mapStateToProps (state) {
+function mapStateToProps (state, decks) {
   return {
+    decks,
     state,
   }
 }

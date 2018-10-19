@@ -44,3 +44,9 @@ setInitialDeck = () => {
 
   return initialDeck
 }
+
+export function formatDecksResult (results) {
+  return results === null
+    ? setInitialDeck()
+    : results
+}
