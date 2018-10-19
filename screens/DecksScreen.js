@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux'
+import { receiveDecks } from '../actions'
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
