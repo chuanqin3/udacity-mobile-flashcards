@@ -3,8 +3,7 @@ export const ADD_DECK = 'ADD_DECK'
 
 // export function handleInitialData() {
 //   return (dispatch) => {
-//     return getInitialData()
-//       .then
+//     return fetchDecks()
 //   }
 // }
 

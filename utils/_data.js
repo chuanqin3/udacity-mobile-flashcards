@@ -9,33 +9,36 @@ function generateUID () {
 export const DECK_STORAGE_KEY = 'Flashcards:decks'
 
 // @ is a decorator
-_storeData = async () => {
-  try {
-    await AsyncStorage.setItem(DECK_STORAGE_KEY, 'I like to save it.');
-  } catch (error) {
-    // Error saving data
-    console.warn('We have an error with saving data: ', error)
-  }
-}
+// _storeData = async () => {
+//   try {
+//     await AsyncStorage.setItem(DECK_STORAGE_KEY, 'I like to save it.');
+//   } catch (error) {
+//     // Error saving data
+//     console.warn('We have an error with saving data: ', error)
+//   }
+// }
 
 setInitialDeck = () => {
   let initialDeck = {
-    title: 'U.S. History',
-    cards: {
-      "8xf0y6ziyjabvozdd253nd": {
-        id: '8xf0y6ziyjabvozdd253nd',
-        question: 'What is the capital of the U.S.?',
-        answer: 'Washington, D.C.'
-      },
-      "6ni6ok3ym7mf1p33lnez": {
-        id: '6ni6ok3ym7mf1p33lnez',
-        question: 'Who is the 45th president of the U.S.?',
-        answer: 'Donald Trump'
-      },
-      "am8ehyc8byjqgar0jgpub9": {
-        id: 'am8ehyc8byjqgar0jgpub9',
-        question: 'How many states in the U.S.?',
-        answer: '50'
+    USHistory: {
+      title: 'U.S. History',
+      numberOfCards: 3,
+      cards: {
+        "8xf0y6ziyjabvozdd253nd": {
+          id: '8xf0y6ziyjabvozdd253nd',
+          question: 'What is the capital of the U.S.?',
+          answer: 'Washington, D.C.'
+        },
+        "6ni6ok3ym7mf1p33lnez": {
+          id: '6ni6ok3ym7mf1p33lnez',
+          question: 'Who is the 45th president of the U.S.?',
+          answer: 'Donald Trump'
+        },
+        "am8ehyc8byjqgar0jgpub9": {
+          id: 'am8ehyc8byjqgar0jgpub9',
+          question: 'How many states in the U.S.?',
+          answer: '50'
+        }
       }
     }
   }
@@ -45,8 +48,37 @@ setInitialDeck = () => {
   return initialDeck
 }
 
+// export const initialDeck = {
+//   USHistory: {
+//     title: 'U.S. History',
+//     numberOfCards: 3,
+//     cards: {
+//       "8xf0y6ziyjabvozdd253nd": {
+//         id: '8xf0y6ziyjabvozdd253nd',
+//         question: 'What is the capital of the U.S.?',
+//         answer: 'Washington, D.C.'
+//       },
+//       "6ni6ok3ym7mf1p33lnez": {
+//         id: '6ni6ok3ym7mf1p33lnez',
+//         question: 'Who is the 45th president of the U.S.?',
+//         answer: 'Donald Trump'
+//       },
+//       "am8ehyc8byjqgar0jgpub9": {
+//         id: 'am8ehyc8byjqgar0jgpub9',
+//         question: 'How many states in the U.S.?',
+//         answer: '50'
+//       }
+//     }
+//   }
+// }
+
 export function formatDecksResult (results) {
   return results === null
     ? setInitialDeck()
     : results
+}
+
+export function fetchDecks() {
+  return AsyncStorage.getItem(DECK_STORAGE_KEY)
+    .then(results => JSON.parse(results))
 }
