@@ -7,10 +7,12 @@ import DecksScreen from '../screens/DecksScreen';
 import AddDeckScreen from '../screens/AddDeckScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import DeckDetailsScreen from '../screens/DeckDetailScreen';
+import AddCardScreen from '../screens/AddCardScreen'
 
 const DecksStack = createStackNavigator({
   Decks: { screen: DecksScreen },
   DeckDetail: { screen: DeckDetailsScreen },
+  AddCard: { screen: AddCardScreen}
 }, {
   initialRouteName: 'Decks',
 });
