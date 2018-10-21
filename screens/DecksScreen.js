@@ -40,6 +40,9 @@ class DecksScreen extends React.Component {
     header: null,
   };
 
+  toDetail = () => {
+    this.props.navigation.navigate('DeckDetail')
+  }
 
   render() {
     console.log('the state is ', this.state)
@@ -61,7 +64,7 @@ class DecksScreen extends React.Component {
         console.log(val);
       })
 
-      return <DeckCard key={id} numberOfCards={this.numberOfCards}>{deck}</DeckCard>
+      return <DeckCard key={id} numberOfCards={this.numberOfCards} onPress={() => this.toDetail()}>{deck}</DeckCard>
     })
 
 
