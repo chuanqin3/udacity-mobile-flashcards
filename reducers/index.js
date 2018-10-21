@@ -6,7 +6,7 @@ export default function decks (state = {}, action) {
     case RECEIVE_DECKS :
       return {
         ...state,
-        decks: action.decks,
+        ...action.decks,
       }
     case ADD_DECK :
       return {

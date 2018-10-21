@@ -1,10 +1,20 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-export default function DeckCard ({ metrics }) {
+export default function DeckCard ({ children, onPress, style={} }) {
   return (
-    <View>
-      <Text>Deck Card</Text>
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <Text style={[styles.button, style]}>{children}</Text>
+    </TouchableOpacity>
   )
 }
+
+const styles = StyleSheet.create({
+  button: {
+    textAlign: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    width: 100,
+    margin: 10,
+  }
+})

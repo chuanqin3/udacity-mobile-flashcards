@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import { receiveDecks } from '../actions'
 import { fetchDecks } from '../utils/api'
 import { AppLoading } from 'expo'
-import { AsyncStorage } from 'react-native'
+import DeckCard from '../components/DeckCard'
 
 class DecksScreen extends React.Component {
   state = {
@@ -20,9 +20,6 @@ class DecksScreen extends React.Component {
   }
   componentDidMount() {
     const { dispatch } = this.props
-
-    // // temporary: destory old decks
-    // AsyncStorage.removeItem(DECK_STORAGE_KEY)
 
     // fetch data from Redux State
     fetchDecks()
@@ -39,29 +36,36 @@ class DecksScreen extends React.Component {
     header: null,
   };
 
+
   render() {
+    console.log('the state is ', this.state)
+    console.log('the props is ', this.props)
     const { decks } = this.props
+    const deckNames = Object.keys(decks)
+    console.log('deckNames ', deckNames)
+
+
+    // decide if we should render the view, avoid 'undefined' problem
     const { ready } = this.state
     if (ready === false ) {
       return <AppLoading />
     }
-    console.log(this.props)
+
+    // render the interface
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Text>test</Text>
+          <DeckCard>{deckNames}</DeckCard>
         </ScrollView>
       </View>
     );
   }
 }
 
-function mapStateToProps (state, decks) {
-  const deckNames = Object.keys(state)
-
+function mapStateToProps (decks) {
+  console.log(decks.decks)
   return {
-    deckNames,
-    // decks,
+    decks,
   }
 }
 
