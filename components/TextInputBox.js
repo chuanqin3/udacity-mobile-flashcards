@@ -1,17 +1,29 @@
 import React, { Component } from 'react'
-import { TextInput, StyleSheet } from 'react-native'
+import { TextInput, StyleSheet, TouchableOpacity, View, Text } from 'react-native'
+import { NavigationActions } from 'react-navigation'
+import TextButton from '../components/TextButton'
 
 export default class TextInputBox extends Component {
   state = {
     text: ''
   }
+  onSubmitEdit = () => {
+    console.log(this.props)
+    this.props.toHome()
+  }
+
   render() {
     return (
-      <TextInput
-        style={[styles.inputBox]}
-        maxLength={30}
-        onChangeText={(text) => this.setState({text})}
-        placeholder={this.props.children}/>
+      <View>
+        <TextInput
+          style={[styles.inputBox]}
+          maxLength={30}
+          onChangeText={(text) => this.setState({text})}
+          placeholder={this.props.children}
+          onSubmitEditing={this.onSubmitEdit}
+        />
+        <TextButton onPress={this.onSubmitEdit}>{this.props.buttonText}</TextButton>
+      </View>
     )
   }
 }
