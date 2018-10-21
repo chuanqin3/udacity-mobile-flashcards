@@ -11,7 +11,7 @@ export default function decks (state = {}, action) {
       return {
         ...state,
         [action.deckName]: {
-          numberOfCards: 0,
+          highestScore: 0,
           cards: [],
         },
       }
@@ -19,7 +19,7 @@ export default function decks (state = {}, action) {
       return {
         ...state,
         [action.deckName]: {
-          numberOfCards: state[action.deckName].numberOfCards + 1,
+          ...state[action.deckName],
           cards: [
             ...state[action.deckName].cards,
             {

@@ -69,9 +69,10 @@ class DecksScreen extends React.Component {
       //   console.log(val);
       // })
 
-      const numberOfCards = decks[deckName].numberOfCards
+      const highestScore = decks[deckName].highestScore
+      const numberOfQuestions = decks[deckName].cards.length
 
-      return <DeckCard key={id} numberOfCards={numberOfCards} onPress={() => this.props.navigation.navigate('DeckDetail', { deckName })}>{deckName}</DeckCard>
+      return <DeckCard key={id} numberOfQuestions={numberOfQuestions} onPress={() => this.props.navigation.navigate('DeckDetail', { deckName })}>{deckName}</DeckCard>
     })
 
     // render the interface
