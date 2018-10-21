@@ -15,6 +15,12 @@ export default class AddScreen extends React.Component {
   }
 
   onSubmitEdit = () => {
+    const deckTitle = this.state
+    // add an empty deck
+
+
+    // reset state and go back to home screen
+    this.setState(() => {text: ''})
     this.toHome()
   }
 

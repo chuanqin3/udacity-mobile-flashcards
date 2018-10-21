@@ -51,14 +51,14 @@ class DecksScreen extends React.Component {
 
     const deckList = deckNames.map((deck, id) => {
       // get the title of deck
-      const titleOfDeck = new Promise(function(resolve) {
-        resolve(decks)
-      });
-      titleOfDeck.then(function(val) {
-        return val[deck].title
-      }).then(function(val) {
-        console.log(val);
-      })
+      // const titleOfDeck = new Promise(function(resolve) {
+      //   resolve(decks)
+      // });
+      // titleOfDeck.then(function(val) {
+      //   return val[deck].title
+      // }).then(function(val) {
+      //   console.log(val);
+      // })
       // get number of cards in the deck
       const numberOfCards = new Promise(function(resolve) {
         resolve(decks)
@@ -70,7 +70,7 @@ class DecksScreen extends React.Component {
         console.log(val);
       })
 
-      return <DeckCard key={id} numberOfCards={this.umberOfCards}>{deck}</DeckCard>
+      return <DeckCard key={id} numberOfCards={this.numberOfCards}>{deck}</DeckCard>
     })
 
 
