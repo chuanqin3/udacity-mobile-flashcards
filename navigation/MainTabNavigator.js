@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import DecksScreen from '../screens/DecksScreen';
-import AddScreen from '../screens/AddScreen';
+import AddDeckScreen from '../screens/AddDeckScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import DeckDetailsScreen from '../screens/DeckDetailScreen';
 
@@ -29,11 +29,11 @@ DecksStack.navigationOptions = {
   ),
 };
 
-const AddStack = createStackNavigator({
-  Add: AddScreen,
+const AddDeckStack = createStackNavigator({
+  Add: AddDeckScreen,
 });
 
-AddStack.navigationOptions = {
+AddDeckStack.navigationOptions = {
   tabBarLabel: 'Add Deck',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -59,6 +59,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   DecksStack,
-  AddStack,
+  AddDeckStack,
   SettingsStack,
 });

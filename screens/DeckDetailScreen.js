@@ -13,7 +13,7 @@ class DeckDetail extends React.Component {
       <View>
       <Text>{deckName} Deck Details</Text>
         <TouchableOpacity>
-          <TextButton>Start Quiz</TextButton>
+          <TextButton onPress={() => console.log('test')}>Start Quiz</TextButton>
           <TextButton>Add Card</TextButton>
           <TextButton>Delete Deck</TextButton>
         </TouchableOpacity>
