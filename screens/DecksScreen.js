@@ -40,16 +40,14 @@ class DecksScreen extends React.Component {
     header: null,
   };
 
-  toDetail = () => {
-    this.props.navigation.navigate('DeckDetail')
+  toDetail = (deck) => {
+    this.props.navigation.navigate('DeckDetail', { deck })
   }
 
   render() {
-    console.log('the state is ', this.state)
-    console.log('the props is ', this.props)
+    // console.log('the state is ', this.state)
+    // console.log('the props is ', this.props)
     const { decks } = this.props
-    const deckNames = Object.keys(decks)
-    console.log(decks)
     // console.log('deckNames ', deckNames, deckNames.length)
 
     // decide if we should render the view, avoid 'undefined' problem
@@ -58,7 +56,8 @@ class DecksScreen extends React.Component {
       return <AppLoading />
     }
 
-    const deckList = deckNames.map((deck, id) => {
+    const deckNames = Object.keys(decks)
+    const deckList = deckNames.map((deckName, id) => {
       // get number of cards in the deck
       // const numberOfCards = new Promise(function(resolve) {
       //   resolve(decks)
@@ -70,16 +69,15 @@ class DecksScreen extends React.Component {
       //   console.log(val);
       // })
 
-      const numberOfCards = decks[deck].numberOfCards
+      const numberOfCards = decks[deckName].numberOfCards
 
-      return <DeckCard key={id} numberOfCards={numberOfCards} onPress={() => this.toDetail()}>{deck}</DeckCard>
+      return <DeckCard key={id} numberOfCards={numberOfCards} onPress={() => this.props.navigation.navigate('DeckDetail', { deckName })}>{deckName}</DeckCard>
     })
 
     // render the interface
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          {/* <DeckCard>{deckNames}</DeckCard> */}
           {deckList}
         </ScrollView>
       </View>
@@ -88,7 +86,6 @@ class DecksScreen extends React.Component {
 }
 
 function mapStateToProps (decks) {
-  console.log(decks.decks)
   return {
     decks,
   }
