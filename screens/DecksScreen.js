@@ -42,7 +42,11 @@ class DecksScreen extends React.Component {
     console.log('the props is ', this.props)
     const { decks } = this.props
     const deckNames = Object.keys(decks)
-    console.log('deckNames ', deckNames)
+    console.log('deckNames ', deckNames, deckNames.length)
+
+    const deckList = deckNames.map((deck, id) => (
+      <DeckCard key={id}>{deck}</DeckCard>
+    ))
 
 
     // decide if we should render the view, avoid 'undefined' problem
@@ -55,7 +59,8 @@ class DecksScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <DeckCard>{deckNames}</DeckCard>
+          {/* <DeckCard>{deckNames}</DeckCard> */}
+          {deckList}
         </ScrollView>
       </View>
     );
