@@ -42,11 +42,32 @@ class DecksScreen extends React.Component {
     console.log('the props is ', this.props)
     const { decks } = this.props
     const deckNames = Object.keys(decks)
-    console.log('deckNames ', deckNames, deckNames.length)
+    console.log(decks)
+    // console.log('deckNames ', deckNames, deckNames.length)
 
-    const deckList = deckNames.map((deck, id) => (
-      <DeckCard key={id}>{deck}</DeckCard>
-    ))
+    const deckList = deckNames.map((deck, id) => {
+      // get the title of deck
+      const titleOfDeck = new Promise(function(resolve) {
+        resolve(decks)
+      });
+      titleOfDeck.then(function(val) {
+        return val[deck].title
+      }).then(function(val) {
+        console.log(val);
+      })
+      // get number of cards in the deck
+      const numberOfCards = new Promise(function(resolve) {
+        resolve(decks)
+      });
+      numberOfCards.then(function(val) {
+        console.log(val);
+        return val[deck].numberOfCards;
+      }).then(function(val) {
+        console.log(val);
+      })
+
+      return <DeckCard key={id} numberOfCards={this.umberOfCards}>{deck}</DeckCard>
+    })
 
 
     // decide if we should render the view, avoid 'undefined' problem

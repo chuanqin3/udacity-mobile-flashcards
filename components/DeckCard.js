@@ -1,10 +1,12 @@
 import React from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-export default function DeckCard ({ children, onPress, style={} }) {
+export default function DeckCard ({ children, onPress, numberOfCards, style={} }) {
+  console.log(numberOfCards)
   return (
     <TouchableOpacity onPress={onPress}>
       <Text style={[styles.button, style]}>{children}</Text>
+      <Text>{numberOfCards}</Text>
     </TouchableOpacity>
   )
 }
