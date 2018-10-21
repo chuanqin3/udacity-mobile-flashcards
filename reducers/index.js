@@ -1,4 +1,4 @@
-import { RECEIVE_DECKS, ADD_DECK } from '../actions'
+import { RECEIVE_DECKS, ADD_DECK, CLEAR_DECKS } from '../actions'
 import { initialDeck } from '../utils/_data'
 
 export default function decks (state = {}, action) {
@@ -6,7 +6,7 @@ export default function decks (state = {}, action) {
     case RECEIVE_DECKS :
       return {
         ...state,
-        ...action.decks,
+        decks: action.decks,
       }
     case ADD_DECK :
       return {

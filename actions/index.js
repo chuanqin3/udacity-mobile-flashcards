@@ -1,11 +1,13 @@
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
+export const CLEAR_DECKS = 'CLEAR_DECKS'
 
-// export function handleInitialData() {
-//   return (dispatch) => {
-//     return fetchDecks()
-//   }
-// }
+export function clearDecks() {
+  return {
+    type: CLEAR_DECKS,
+    decks,
+  }
+}
 
 export function receiveDecks (decks) {
   return {
