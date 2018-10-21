@@ -8,11 +8,15 @@ import AddDeckScreen from '../screens/AddDeckScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import DeckDetailsScreen from '../screens/DeckDetailScreen';
 import AddCardScreen from '../screens/AddCardScreen'
+import QuizScreen from '../screens/QuizScreen'
+import ScoreScreen from '../screens/ScoreScreen'
 
 const DecksStack = createStackNavigator({
   Decks: { screen: DecksScreen },
   DeckDetail: { screen: DeckDetailsScreen },
-  AddCard: { screen: AddCardScreen}
+  AddCard: { screen: AddCardScreen},
+  Quiz: { screen: QuizScreen },
+  Score: { screen: ScoreScreen },
 }, {
   initialRouteName: 'Decks',
 });
