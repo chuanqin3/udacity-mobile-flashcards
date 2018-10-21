@@ -13,6 +13,7 @@ import { receiveDecks } from '../actions'
 import { fetchDecks } from '../utils/api'
 import { AppLoading } from 'expo'
 import DeckCard from '../components/DeckCard'
+import { AsyncStorage } from 'react-native'
 
 class DecksScreen extends React.Component {
   state = {
@@ -20,6 +21,9 @@ class DecksScreen extends React.Component {
   }
   componentDidMount() {
     const { dispatch } = this.props
+
+    // temporary: clear local storage data
+    // AsyncStorage.removeItem('Flashcards:decks')
 
     // fetch data from Redux State
     fetchDecks()

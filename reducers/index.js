@@ -1,5 +1,4 @@
-import { RECEIVE_DECKS, ADD_DECK, CLEAR_DECKS } from '../actions'
-import { initialDeck } from '../utils/_data'
+import { RECEIVE_DECKS, ADD_DECK, DELETE_DECKS } from '../actions'
 
 export default function decks (state = {}, action) {
   switch (action.type) {
@@ -11,7 +10,10 @@ export default function decks (state = {}, action) {
     case ADD_DECK :
       return {
         ...state,
-        ...action.deck,
+        [action.deckName]: {
+          numberOfCards: 0,
+          cards: [],
+        },
       }
     default :
       return state

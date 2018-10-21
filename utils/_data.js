@@ -6,8 +6,7 @@ export const DECK_STORAGE_KEY = 'Flashcards:decks'
 
 setInitialDeck = () => {
   let initialDeck = {
-    USHistory: {
-      title: 'U.S. History',
+    'U.S. History': {
       numberOfCards: 3,
       cards: [
         {
@@ -24,8 +23,7 @@ setInitialDeck = () => {
         },
       ]
     },
-    WorldHistory: {
-      title: 'World History',
+    'World History': {
       numberOfCards: 2,
       cards: [
         {

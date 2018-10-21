@@ -1,8 +1,8 @@
 export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
-export const CLEAR_DECKS = 'CLEAR_DECKS'
+export const CLEAR_DECKS = 'DELETE_DECK'
 
-export function clearDecks() {
+export function deleteDecks() {
   return {
     type: CLEAR_DECKS,
     decks,
@@ -16,9 +16,9 @@ export function receiveDecks (decks) {
   }
 }
 
-export function addDeck (deck) {
+export function addDeck (deckName) {
   return {
     type: ADD_DECK,
-    deck,
+    deckName,
   }
 }

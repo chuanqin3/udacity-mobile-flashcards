@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { TextInput, StyleSheet, TouchableOpacity, View, Text } from 'react-native'
-import { NavigationActions } from 'react-navigation'
 import TextButton from '../components/TextButton'
 
 export default class TextInputBox extends Component {
