@@ -52,27 +52,28 @@ class DecksScreen extends React.Component {
     console.log(decks)
     // console.log('deckNames ', deckNames, deckNames.length)
 
-    const deckList = deckNames.map((deck, id) => {
-      // get number of cards in the deck
-      const numberOfCards = new Promise(function(resolve) {
-        resolve(decks)
-      });
-      numberOfCards.then(function(val) {
-        console.log(val);
-        return val[deck].numberOfCards;
-      }).then(function(val) {
-        console.log(val);
-      })
-
-      return <DeckCard key={id} numberOfCards={this.numberOfCards} onPress={() => this.toDetail()}>{deck}</DeckCard>
-    })
-
-
     // decide if we should render the view, avoid 'undefined' problem
     const { ready } = this.state
-    if (ready === false ) {
+    if (ready === false || decks === null) {
       return <AppLoading />
     }
+
+    const deckList = deckNames.map((deck, id) => {
+      // get number of cards in the deck
+      // const numberOfCards = new Promise(function(resolve) {
+      //   resolve(decks)
+      // });
+      // numberOfCards.then(function(val) {
+      //   console.log(val);
+      //   return val[deck].numberOfCards;
+      // }).then(function(val) {
+      //   console.log(val);
+      // })
+
+      const numberOfCards = decks[deck].numberOfCards
+
+      return <DeckCard key={id} numberOfCards={numberOfCards} onPress={() => this.toDetail()}>{deck}</DeckCard>
+    })
 
     // render the interface
     return (
