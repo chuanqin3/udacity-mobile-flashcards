@@ -14,7 +14,7 @@ class DeckDetail extends React.Component {
       <Text>{deckName} Deck Details</Text>
         <TouchableOpacity>
           <TextButton onPress={() => console.log('test')}>Start Quiz</TextButton>
-          <TextButton onPress={() => this.props.navigation.navigate('AddCard')}>Add Card</TextButton>
+          <TextButton onPress={() => this.props.navigation.navigate('AddCard', { deckName })}>Add Card</TextButton>
           <TextButton>Delete Deck</TextButton>
         </TouchableOpacity>
       </View>

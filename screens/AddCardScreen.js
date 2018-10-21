@@ -2,12 +2,29 @@ import React from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import TextButton from '../components/TextButton'
+import { addCard } from '../actions'
+import { NavigationActions } from 'react-navigation'
 
 class AddCardScreen extends React.Component {
   state = {
     question: '',
     answer: '',
   }
+
+  onSubmitEdit = () => {
+    const question = this.state.question
+    const answer = this.state.answer
+    const { dispatch, navigation } = this.props
+    const deckName = navigation.getParam('deckName', 'no deck name found')
+    console.log(deckName)
+
+    // add card to the selected deck
+    dispatch(addCard(deckName, question, answer))
+
+    // go back to previous page
+    this.props.navigation.dispatch(NavigationActions.back())
+  }
+
   render() {
     return (
       <View style={styles.container}>
