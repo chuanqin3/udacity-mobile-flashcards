@@ -4,8 +4,9 @@ import TextInputBox from '../components/TextInputBox'
 import { NavigationActions } from 'react-navigation'
 import { addDeck } from '../actions'
 import TextButton from '../components/TextButton'
+import { connect } from 'react-redux';
 
-export default class AddScreen extends React.Component {
+class AddScreen extends React.Component {
   static navigationOptions = {
     title: 'Add a Deck',
   };
@@ -15,9 +16,11 @@ export default class AddScreen extends React.Component {
   }
 
   onSubmitEdit = () => {
-    const deckTitle = this.state
+    const deckName = this.state.text
+    const { dispatch } = this.props
+    console.log(deckName)
     // add an empty deck
-
+    dispatch(addDeck(deckName))
 
     // reset state and go back to home screen
     this.setState(() => {text: ''})
@@ -28,10 +31,6 @@ export default class AddScreen extends React.Component {
     // obtain a route’s navigator key, which is defined in MainTabNavigator.js
     // console.log(this.props.navigation.dangerouslyGetParent().state.key)
     this.props.navigation.dispatch(NavigationActions.back())
-  }
-
-  addDeck = () => {
-    this.addDeck
   }
 
   render() {
@@ -50,6 +49,14 @@ export default class AddScreen extends React.Component {
     );
   }
 }
+
+function mapDispatchToProps (dispatch) {
+  return {
+    dispatch,
+  }
+}
+
+export default connect(mapDispatchToProps)(AddScreen)
 
 const styles = StyleSheet.create({
   container: {
