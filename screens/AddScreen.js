@@ -1,13 +1,22 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import TextButton from '../components/TextButton'
+import { View, StyleSheet, Text, TextInput } from 'react-native';
 import TextInputBox from '../components/TextInputBox'
 import { NavigationActions } from 'react-navigation'
+import { addDeck } from '../actions'
+import TextButton from '../components/TextButton'
 
 export default class AddScreen extends React.Component {
   static navigationOptions = {
     title: 'Add a Deck',
   };
+
+  state = {
+    text: ''
+  }
+
+  onSubmitEdit = () => {
+    this.toHome()
+  }
 
   toHome = () => {
     // obtain a route’s navigator key, which is defined in MainTabNavigator.js
@@ -15,12 +24,22 @@ export default class AddScreen extends React.Component {
     this.props.navigation.dispatch(NavigationActions.back())
   }
 
+  addDeck = () => {
+    this.addDeck
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>What is the title of your new deck?</Text>
-        <TextInputBox buttonText={'Create Deck'} toHome={this.toHome}>Input the deck title here</TextInputBox>
-        {/* <TextButton onPress={this.submit}>Create Deck</TextButton> */}
+        <TextInput
+          style={[styles.inputBox]}
+          maxLength={30}
+          onChangeText={(text) => this.setState({text})}
+          placeholder={`Input the deck title here`}
+          onSubmitEditing={this.onSubmitEdit}
+        />
+        <TextButton onPress={this.onSubmitEdit}>Create Deck</TextButton>
       </View>
     );
   }
@@ -36,5 +55,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     padding: 10,
+  },
+  inputBox: {
+    height: 30,
+    width: 200,
+    borderColor: 'gray',
+    borderWidth: 1,
   }
 });

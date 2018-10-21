@@ -7,7 +7,8 @@ export default class TextInputBox extends Component {
     text: ''
   }
   onSubmitEdit = () => {
-    console.log(this.props)
+    console.log(this.props.addDeck)
+    this.props.addDeck(this.state)
     this.props.toHome()
   }
 
