@@ -50,15 +50,6 @@ class DecksScreen extends React.Component {
     // console.log('deckNames ', deckNames, deckNames.length)
 
     const deckList = deckNames.map((deck, id) => {
-      // get the title of deck
-      // const titleOfDeck = new Promise(function(resolve) {
-      //   resolve(decks)
-      // });
-      // titleOfDeck.then(function(val) {
-      //   return val[deck].title
-      // }).then(function(val) {
-      //   console.log(val);
-      // })
       // get number of cards in the deck
       const numberOfCards = new Promise(function(resolve) {
         resolve(decks)
