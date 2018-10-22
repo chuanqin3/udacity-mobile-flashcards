@@ -7,9 +7,18 @@ import { NavigationActions } from 'react-navigation'
 
 class ScoreScreen extends React.Component {
   render () {
+    const { navigation } = this.props
+    const deckName = navigation.getParam('deckName', 'no deck name found')
+    const correctAnswers = navigation.getParam('correctAnswers', 'no correctAnswers found')
+    const numberOfQuestions = navigation.getParam('numberOfQuestions', 'no numberOfQuestions found')
+
+    console.log(this.props.navigation)
     return (
       <View>
-        <Text>Questions</Text>
+        <Text>Score</Text>
+        <Text>You mastered {correctAnswers} out of {numberOfQuestions} cards in {deckName} deck!</Text>
+        <TextButton onPress={() => this.props.navigation.navigate('Quiz')}>Restart Quiz?</TextButton>
+        <TextButton onPress={() => this.props.navigation.navigate('Decks')}>Go back to Home</TextButton>
       </View>
     )
   }

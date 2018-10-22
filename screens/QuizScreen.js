@@ -9,31 +9,44 @@ class QuizScreen extends React.Component {
   state = {
     showAnswer: false,
     numberOfQuestions: this.props.decks[this.props.navigation.getParam('deckName')].cards.length,
-    currentQuestionStepper: 0,
+    QuestionStepper: 0,
+    correctAnswers: 0,
   }
 
   showAnswer = () => {
     this.setState(({ showAnswer }) => ({ showAnswer: !showAnswer }))
   }
 
+  registerResponse = (value) => {
+    console.log(value)
+    if (value === 'correct') {
+      this.setState(({ correctAnswers }) => ({ correctAnswers: correctAnswers + 1}))
+    }
+    this.setState(({ QuestionStepper }) => ({ QuestionStepper: QuestionStepper + 1}))
+  }
+
   render () {
     const { navigation, decks } = this.props
+    const { QuestionStepper, numberOfQuestions, correctAnswers } = this.state
     const deckName = navigation.getParam('deckName', 'no deck name found')
-    const numberOfQuestions = decks[deckName].cards.length
-    console.log(this.props)
-    console.log(this.state.numberOfQuestions)
-    // if (this.state.numberOfQuestions === '') {
-    //   this.setState(({ numberOfQuestions }) => ({ numberOfQuestions: numberOfQuestions }))
-    // }
+
+    // check if all cards are tested. If so, go to score page
+    if (numberOfQuestions === QuestionStepper) {
+      // reset stepper
+      this.setState(({QuestionStepper}) => ({ QuestionStepper: 0}))
+
+      return this.props.navigation.navigate('Score', { deckName, correctAnswers, numberOfQuestions })
+    }
 
     return (
       <View>
         <Text>Question</Text>
-        <Text>{decks[deckName].cards[0].question}</Text>
+        <Text>{decks[deckName].cards[QuestionStepper].question}</Text>
         { this.state.showAnswer ?
             <View>
-              <Text>{decks[deckName].cards[0].answer}</Text>
-              <TextButton onPress={this.showAnswer}>Hide Answer</TextButton>
+              <Text>{decks[deckName].cards[QuestionStepper].answer}</Text>
+              <TextButton onPress={() => this.registerResponse('correct')}>Correct</TextButton>
+              <TextButton onPress={() => this.registerResponse('incorrect')}>Incorrect</TextButton>
             </View>
           : <TextButton onPress={this.showAnswer}>Show Answer</TextButton>
         }
