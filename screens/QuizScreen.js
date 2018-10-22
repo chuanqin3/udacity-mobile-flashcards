@@ -32,8 +32,8 @@ class QuizScreen extends React.Component {
 
     // check if all cards are tested. If so, go to score page
     if (numberOfQuestions === QuestionStepper) {
-      // reset stepper
-      this.setState(({QuestionStepper}) => ({ QuestionStepper: 0}))
+      // reset stepper and correct answer counter
+      this.setState(() => ({ QuestionStepper: 0, correctAnswers: 0}))
 
       return this.props.navigation.navigate('Score', { deckName, correctAnswers, numberOfQuestions })
     }
