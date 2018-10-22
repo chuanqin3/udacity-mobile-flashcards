@@ -8,18 +8,23 @@ import { NavigationActions } from 'react-navigation'
 class QuizScreen extends React.Component {
   state = {
     showAnswer: false,
-    numberOfQuestions: 0,
+    numberOfQuestions: this.props.decks[this.props.navigation.getParam('deckName')].cards.length,
     currentQuestionStepper: 0,
   }
 
   showAnswer = () => {
-    this.setState(({ showAnswer }) => ({showAnswer: !showAnswer}))
+    this.setState(({ showAnswer }) => ({ showAnswer: !showAnswer }))
   }
 
   render () {
     const { navigation, decks } = this.props
     const deckName = navigation.getParam('deckName', 'no deck name found')
-    console.log(this.state.showAnswer)
+    const numberOfQuestions = decks[deckName].cards.length
+    console.log(this.props)
+    console.log(this.state.numberOfQuestions)
+    // if (this.state.numberOfQuestions === '') {
+    //   this.setState(({ numberOfQuestions }) => ({ numberOfQuestions: numberOfQuestions }))
+    // }
 
     return (
       <View>
@@ -38,8 +43,6 @@ class QuizScreen extends React.Component {
 }
 
 function mapStateToProps (state) {
-  // const deckToQuiz = decks[deckName]
-  console.log(state)
   return {
     decks: state,
   }
