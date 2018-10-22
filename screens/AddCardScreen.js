@@ -16,7 +16,6 @@ class AddCardScreen extends React.Component {
     const answer = this.state.answer
     const { dispatch, navigation } = this.props
     const deckName = navigation.getParam('deckName', 'no deck name found')
-    console.log(deckName)
 
     // add card to the selected deck
     dispatch(addCard(deckName, question, answer))
