@@ -29,6 +29,11 @@ export default function decks (state = {}, action) {
           ]
         }
       }
+    case DELETE_DECK :
+      return Object.keys(state).filter(deckName !== action.deckName).reduce((obj, key) => {
+        obj[key] = state[key];
+        return obj
+      }, {})
     default :
       return state
   }

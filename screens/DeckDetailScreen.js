@@ -3,11 +3,24 @@ import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import TextButton from '../components/TextButton'
 import { AppLoading } from 'expo'
+import { deleteDeck } from '../actions'
+import { NavigationActions } from 'react-navigation'
 
 class DeckDetail extends React.Component {
   // state = {
   //   ready: false,
   // }
+
+  toDeleteCard = (deckName) => {
+    // const deckName = this.state.text
+    const { dispatch } = this.props
+    console.log(deckName)
+
+    dispatch(deleteDeck(deckName))
+
+    // go back to home
+    this.props.navigation.dispatch(NavigationActions.back())
+  }
 
   render() {
     const { navigation, decks } = this.props
@@ -28,7 +41,7 @@ class DeckDetail extends React.Component {
         <TouchableOpacity>
           <TextButton onPress={() => this.props.navigation.navigate('Quiz', { deckName })}>Start Quiz</TextButton>
           <TextButton onPress={() => this.props.navigation.navigate('AddCard', { deckName })}>Add Card</TextButton>
-          <TextButton>Delete Deck</TextButton>
+          <TextButton onPress={() => this.toDeleteCard(deckName)}>Delete Deck</TextButton>
         </TouchableOpacity>
       </View>
     )

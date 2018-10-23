@@ -3,10 +3,10 @@ export const ADD_DECK = 'ADD_DECK'
 export const DELETE_DECK = 'DELETE_DECK'
 export const ADD_CARD = 'ADD_CARD'
 
-export function deleteDeck() {
+export function deleteDeck(deckName) {
   return {
-    type: CLEAR_DECKS,
-    decks,
+    type: DELETE_DECK,
+    deckName,
   }
 }
 

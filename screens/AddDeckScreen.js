@@ -30,7 +30,7 @@ class AddScreen extends React.Component {
   toHome = () => {
     // obtain a route’s navigator key, which is defined in MainTabNavigator.js
     // console.log(this.props.navigation.dangerouslyGetParent().state.key)
-    this.props.navigation.dispatch(NavigationActions.back())
+    this.props.navigation.navigate('Decks')
   }
 
   render() {
