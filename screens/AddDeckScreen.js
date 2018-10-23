@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { View, StyleSheet, Text, TextInput, ScrollView } from 'react-native';
 import TextInputBox from '../components/TextInputBox'
 import { NavigationActions } from 'react-navigation'
 import { addDeck } from '../actions'
@@ -23,7 +23,7 @@ class AddScreen extends React.Component {
     dispatch(addDeck(deckName))
 
     // reset state and go back to home screen
-    this.setState(() => {text: ''})
+    this.setState(() => ({ text: ''}))
     this.toHome()
   }
 
@@ -35,7 +35,7 @@ class AddScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={{alignItems: 'center'}} style={styles.container} keyboardShouldPersistTaps='handled'>
         <Text style={styles.title}>What is the title of your new deck?</Text>
         <TextInput
           style={[styles.inputBox]}
@@ -45,7 +45,7 @@ class AddScreen extends React.Component {
           onSubmitEditing={this.onSubmitEdit}
         />
         <TextButton onPress={this.onSubmitEdit}>Create Deck</TextButton>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   title: {
     fontSize: 20,
