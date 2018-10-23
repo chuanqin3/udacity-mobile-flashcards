@@ -23,7 +23,8 @@ class AddScreen extends React.Component {
     dispatch(addDeck(deckName))
 
     // reset state and go back to home screen
-    this.setState(() => ({ text: ''}))
+    // this.setState(() => ({ text: ''}))
+    this.setState({ text: ''})
     this.toHome()
   }
 
@@ -40,6 +41,7 @@ class AddScreen extends React.Component {
         <TextInput
           style={[styles.inputBox]}
           maxLength={30}
+          value={this.state.text}
           onChangeText={(text) => this.setState({text})}
           placeholder={`Input the deck title here`}
           onSubmitEditing={this.onSubmitEdit}
