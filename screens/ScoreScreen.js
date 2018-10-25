@@ -21,12 +21,12 @@ class ScoreScreen extends React.Component {
         <Text style={styles.title}>Score</Text>
         <Text>You mastered {correctAnswers} out of {numberOfQuestions} cards in {deckName} deck.</Text>
         {correctAnswers < highestScore ? (
-          <View>
-            <Text>Your highest score is {highestScore}. Re-take this quiz to set a new record!</Text>
+          <View style={styles.comment}>
+            <Text style={styles.comment}>Your highest score is {highestScore}. Re-take this quiz to set a new record!</Text>
           </View>
         ) : (
-          <View>
-            <Text>Congratulation! You set a new record! Your highest score is now {correctAnswers}.</Text>
+          <View style={styles.comment}>
+            <Text style={styles.comment}>Congratulation! Your highest score is now {correctAnswers}.</Text>
           </View>
         )}
         <TextButton onPress={() => this.props.navigation.navigate('Quiz')}>Restart Quiz?</TextButton>
@@ -47,6 +47,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
+    padding: 10,
+  },
+  comments: {
     padding: 10,
   },
 })
