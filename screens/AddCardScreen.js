@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, StyleSheet, Text, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import TextButton from '../components/TextButton'
 import { addCard } from '../actions'

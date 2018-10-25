@@ -1,7 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TextInput, ScrollView } from 'react-native';
-import TextInputBox from '../components/TextInputBox'
-import { NavigationActions } from 'react-navigation'
+import { StyleSheet, Text, TextInput, ScrollView } from 'react-native';
 import { addDeck } from '../actions'
 import TextButton from '../components/TextButton'
 import { connect } from 'react-redux';
@@ -18,7 +16,6 @@ class AddScreen extends React.Component {
   onSubmitEdit = () => {
     const deckName = this.state.text
     const { dispatch } = this.props
-    console.log(deckName)
     // add an empty deck
     dispatch(addDeck(deckName))
 

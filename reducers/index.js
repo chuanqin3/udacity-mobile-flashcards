@@ -1,4 +1,4 @@
-import { RECEIVE_DECKS, ADD_DECK, DELETE_DECK, ADD_CARD } from '../actions'
+import { RECEIVE_DECKS, ADD_DECK, DELETE_DECK, ADD_CARD, SET_HIGHEST_SCORE } from '../actions'
 
 export default function decks (state = {}, action) {
   switch (action.type) {
@@ -34,6 +34,14 @@ export default function decks (state = {}, action) {
         obj[key] = state[key];
         return obj
       }, {})
+    case SET_HIGHEST_SCORE:
+      return {
+        ...state,
+        [action.deckName]: {
+          ...state[action.deckName],
+          highestScore: action.newHighestScore,
+        }
+      }
     default :
       return state
   }

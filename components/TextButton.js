@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { purple } from '../utils/colors'
 
 // children is the text that comes from <TextButton>{children}</TextButton>
 // onPress invokes a function when the button is pressed

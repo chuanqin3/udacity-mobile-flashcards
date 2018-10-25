@@ -1,9 +1,7 @@
 import React from 'react'
-import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import { connect } from 'react-redux'
 import TextButton from '../components/TextButton'
-import { addCard } from '../actions'
-import { NavigationActions } from 'react-navigation'
 
 class QuizScreen extends React.Component {
   state = {
@@ -18,7 +16,6 @@ class QuizScreen extends React.Component {
   }
 
   registerResponse = (value) => {
-    console.log(value)
     if (value === 'correct') {
       this.setState(({ correctAnswers }) => ({ correctAnswers: correctAnswers + 1}))
     }
@@ -29,21 +26,22 @@ class QuizScreen extends React.Component {
     const { navigation, decks } = this.props
     const { QuestionStepper, numberOfQuestions, correctAnswers } = this.state
     const deckName = navigation.getParam('deckName', 'no deck name found')
+    const highestScore = this.props.decks[this.props.navigation.getParam('deckName')].highestScore
 
     // check if all cards are tested. If so, go to score page
     if (numberOfQuestions === QuestionStepper) {
       // reset stepper and correct answer counter
       this.setState(() => ({ QuestionStepper: 0, correctAnswers: 0}))
 
-      return this.props.navigation.navigate('Score', { deckName, correctAnswers, numberOfQuestions })
+      return this.props.navigation.navigate('Score', { deckName, correctAnswers, numberOfQuestions, highestScore })
     }
 
     return (
-      <View>
-        <Text>Question</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Question {QuestionStepper+1} of {numberOfQuestions}</Text>
         <Text>{decks[deckName].cards[QuestionStepper].question}</Text>
         { this.state.showAnswer ?
-            <View>
+            <View style={styles.container}>
               <Text>{decks[deckName].cards[QuestionStepper].answer}</Text>
               <TextButton onPress={() => this.registerResponse('correct')}>Correct</TextButton>
               <TextButton onPress={() => this.registerResponse('incorrect')}>Incorrect</TextButton>
@@ -62,3 +60,16 @@ function mapStateToProps (state) {
 }
 
 export default connect(mapStateToProps)(QuizScreen)
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 15,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 20,
+    padding: 10,
+  },
+})

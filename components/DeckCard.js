@@ -1,13 +1,15 @@
 import React from 'react'
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-export default function DeckCard ({ children, onPress, numberOfQuestions, style={} }) {
-  // console.log(numberOfCards)
+export default function DeckCard ({ children, onPress, numberOfQuestions, highestScore, style={} }) {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <Text style={[styles.button, style]}>{children}</Text>
-      <Text>{numberOfQuestions}</Text>
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <TouchableOpacity onPress={onPress}>
+        <Text style={styles.button}>{children}</Text>
+      </TouchableOpacity>
+      <Text>Number of Cards in this deck: {numberOfQuestions}</Text>
+      <Text>Your highest score: {highestScore}</Text>
+    </View>
   )
 }
 
@@ -18,5 +20,11 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 100,
     margin: 10,
-  }
+  },
+  container: {
+    flex: 1,
+    paddingTop: 15,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+  },
 })
