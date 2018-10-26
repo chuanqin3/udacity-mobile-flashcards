@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text, TextInput } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import TextButton from '../components/TextButton'
 import { addCard } from '../actions'
@@ -33,7 +33,7 @@ class AddCardScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container}>
         <Text style={styles.title}>What is the question of your new card?</Text>
         <TextInput
           style={[styles.inputBox]}
@@ -51,7 +51,7 @@ class AddCardScreen extends React.Component {
           onSubmitEditing={this.onSubmitEdit}
         />
         <TextButton onPress={this.onSubmitEdit}>Add Card</TextButton>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
