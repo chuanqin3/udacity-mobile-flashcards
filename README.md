@@ -7,6 +7,8 @@ This app has been tested and works correctly on iOS emulator. Below is a list of
 2. iPhone 8
 3. iPhone 7
 
+This app uses [Expo](https://docs.expo.io/versions/v30.0.0/introduction/) to perform the tests. For more details, please click the hyperlink to go to Expo's documentation.
+
 ### Quick Start
 You need to install `Node.js` at first if you haven't. Then you can clone this project to your preferred place
 and run the following commands:
@@ -19,6 +21,7 @@ If you prefer to use `yarn`, you are welcome to use it.
 2. React Redux
 3. Expo (simulator)
 4. React Navigation
+5. Expo
 
 ### App Structure
 ```
