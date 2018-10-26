@@ -22,7 +22,10 @@ class DeckDetail extends React.Component {
       <View style={styles.container}>
         <Text style={styles.title}>{deckName} Deck ({decks[deckName] ? decks[deckName].cards.length : 0} cards)</Text>
         <TouchableOpacity>
-          <TextButton onPress={() => navigation.navigate('Quiz', { deckName })}>Start Quiz</TextButton>
+          { decks[deckName] && decks[deckName].cards.length
+            ? <TextButton onPress={() => navigation.navigate('Quiz', { deckName })}>Start Quiz</TextButton>
+            : null
+          }
           <TextButton onPress={() => navigation.navigate('AddCard', { deckName })}>Add Card</TextButton>
           <TextButton onPress={() => this.toDeleteCard(deckName)}>Delete Deck</TextButton>
         </TouchableOpacity>
