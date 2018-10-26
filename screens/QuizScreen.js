@@ -21,6 +21,8 @@ class QuizScreen extends React.Component {
     }
     this.setState(({ QuestionStepper }) => ({ QuestionStepper: QuestionStepper + 1}))
 
+    // reset showAnswer to false
+    this.setState(({ showAnswer }) => ({ showAnswer: !showAnswer }))
   }
 
   render () {
@@ -40,14 +42,16 @@ class QuizScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Question {QuestionStepper+1} of {numberOfQuestions}</Text>
-        <Text>{decks[deckName].cards[QuestionStepper].question}</Text>
         { this.state.showAnswer ?
             <View style={styles.container}>
               <Text>{decks[deckName].cards[QuestionStepper].answer}</Text>
               <TextButton onPress={() => this.registerResponse('correct')}>Correct</TextButton>
               <TextButton onPress={() => this.registerResponse('incorrect')}>Incorrect</TextButton>
             </View>
-          : <TextButton onPress={this.showAnswer}>Show Answer</TextButton>
+          : <View style={styles.container}>
+              <Text>{decks[deckName].cards[QuestionStepper].question}</Text>
+              <TextButton onPress={this.showAnswer}>Show Answer</TextButton>
+            </View>
         }
       </View>
     )
