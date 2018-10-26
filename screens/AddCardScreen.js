@@ -17,6 +17,13 @@ class AddCardScreen extends React.Component {
     const { dispatch, navigation } = this.props
     const deckName = navigation.getParam('deckName', 'no deck name found')
 
+    // add validation to prevent empty question and answer
+    if (!question) {
+      return alert("Question cannot be empty. Please re-enter.")
+    } else if (!answer) {
+      return alert("Answer cannot be empty. Please re-enter.")
+    }
+
     // add card to the selected deck
     dispatch(addCard(deckName, question, answer))
 

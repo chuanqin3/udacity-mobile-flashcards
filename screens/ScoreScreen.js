@@ -3,8 +3,13 @@ import { View, StyleSheet, Text } from 'react-native'
 import { connect } from 'react-redux'
 import TextButton from '../components/TextButton'
 import { setHighestScore } from '../actions'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 class ScoreScreen extends React.Component {
+  componentDidMount () {
+    clearLocalNotification().then(setLocalNotification)
+  }
+
   render () {
     const { navigation, dispatch } = this.props
     const deckName = navigation.getParam('deckName', 'no deck name found')

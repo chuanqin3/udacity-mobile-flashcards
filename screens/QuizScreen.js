@@ -20,6 +20,7 @@ class QuizScreen extends React.Component {
       this.setState(({ correctAnswers }) => ({ correctAnswers: correctAnswers + 1}))
     }
     this.setState(({ QuestionStepper }) => ({ QuestionStepper: QuestionStepper + 1}))
+
   }
 
   render () {

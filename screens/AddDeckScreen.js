@@ -16,19 +16,19 @@ class AddScreen extends React.Component {
   onSubmitEdit = () => {
     const deckName = this.state.text
     const { dispatch } = this.props
+    // add validation to prevent empty deck name
+    if (!deckName) {
+      return alert("Deck name cannot be empty. Please re-enter.")
+    }
+
     // add an empty deck
     dispatch(addDeck(deckName))
 
     // reset state and go back to home screen
-    // this.setState(() => ({ text: ''}))
     this.setState({ text: ''})
-    this.toHome()
-  }
 
-  toHome = () => {
-    // obtain a route’s navigator key, which is defined in MainTabNavigator.js
-    // console.log(this.props.navigation.dangerouslyGetParent().state.key)
-    this.props.navigation.navigate('Decks')
+    // go to the individual deck view
+    this.props.navigation.navigate('DeckDetail', { deckName })
   }
 
   render() {
